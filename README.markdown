@@ -8,5 +8,6 @@ It going to be enhanced with:
 3. high frequency filter (High-pass filter) instead of stupid ignoring 49/50 sensor updates
 
 ### Articles to Learn
+* http://stackoverflow.com/questions/1884699/android-compass-noise-algorithm
 * http://stackoverflow.com/questions/4742740/android-accelerometer-filtering
 * http://stackoverflow.com/questions/1638864/filtering-accelerometer-data-noise
