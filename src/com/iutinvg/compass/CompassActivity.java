@@ -28,6 +28,18 @@ public class CompassActivity extends FragmentActivity {
 	}
 
 	@Override
+	protected void onPause() {
+		super.onPause();
+		compass.stop();
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		compass.start();
+	}
+
+	@Override
 	protected void onStop() {
 		super.onStop();
 		Log.d(TAG, "stop compass");
