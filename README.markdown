@@ -1,5 +1,5 @@
 Compass is a sample android application which implements trivial compass functionality.
-It was created just as a code example as it is required in most of my projects.
+It was created just as a code snippet as it is required in most of my projects.
 
 It going to be enhanced with:
 
