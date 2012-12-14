@@ -5,9 +5,9 @@ It going to be enhanced with:
 
 1. better graphics
 2. better animation
-3. high frequency filter (High-pass filter) instead of stupid ignoring 49/50 sensor updates
 
 ### Articles to Learn
+* http://stackoverflow.com/questions/12800982/accelerometer-with-low-passfilter-in-android
+* http://developer.android.com/reference/android/hardware/Sensor.html#TYPE_ACCELEROMETER
 * http://stackoverflow.com/questions/1884699/android-compass-noise-algorithm
-* http://stackoverflow.com/questions/4742740/android-accelerometer-filtering
-* http://stackoverflow.com/questions/1638864/filtering-accelerometer-data-noise
+* http://en.wikipedia.org/wiki/Low-pass_filter

@@ -20,7 +20,6 @@ public class Compass implements SensorEventListener {
 	private float[] mGeomagnetic = new float[3];
 	private float azimuth = 0f;
 	private float currectAzimuth = 0;
-	private int count = 0;
 
 	// compass arrow to rotate
 	public ImageView arrowView = null;
@@ -48,6 +47,7 @@ public class Compass implements SensorEventListener {
 			Log.i(TAG, "arrow view is not set");
 			return;
 		}
+
 		Log.i(TAG, "will set rotation from " + currectAzimuth + " to "
 				+ azimuth);
 
@@ -65,38 +65,48 @@ public class Compass implements SensorEventListener {
 
 	@Override
 	public void onSensorChanged(SensorEvent event) {
+		final float alpha = 0.97f;
+
 		synchronized (this) {
 			if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-				mGravity = event.values;
-				// Log.e(TAG, Float.toString(event.values[0]));
+
+				mGravity[0] = alpha * mGravity[0] + (1 - alpha)
+						* event.values[0];
+				mGravity[1] = alpha * mGravity[1] + (1 - alpha)
+						* event.values[1];
+				mGravity[2] = alpha * mGravity[2] + (1 - alpha)
+						* event.values[2];
+
+				// mGravity = event.values;
+
+				// Log.e(TAG, Float.toString(mGravity[0]));
 			}
 
 			if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD) {
-				mGeomagnetic = event.values;
+				// mGeomagnetic = event.values;
+
+				mGeomagnetic[0] = alpha * mGeomagnetic[0] + (1 - alpha)
+						* event.values[0];
+				mGeomagnetic[1] = alpha * mGeomagnetic[1] + (1 - alpha)
+						* event.values[1];
+				mGeomagnetic[2] = alpha * mGeomagnetic[2] + (1 - alpha)
+						* event.values[2];
 				// Log.e(TAG, Float.toString(event.values[0]));
+
 			}
 
-			if (count < 50) {
-				count++;
-				return;
-			}
-
-			count = 0;
-
-			if (mGravity != null && mGeomagnetic != null) {
-				float R[] = new float[9];
-				float I[] = new float[9];
-				boolean success = SensorManager.getRotationMatrix(R, I,
-						mGravity, mGeomagnetic);
-				if (success) {
-					float orientation[] = new float[3];
-					SensorManager.getOrientation(R, orientation);
-					// Log.d(TAG, "azimuth (rad): " + azimuth);
-					azimuth = (float) Math.toDegrees(orientation[0]); // orientation
-					azimuth = (azimuth + 360) % 360;
-					// Log.d(TAG, "azimuth (deg): " + azimuth);
-					adjustArrow();
-				}
+			float R[] = new float[9];
+			float I[] = new float[9];
+			boolean success = SensorManager.getRotationMatrix(R, I, mGravity,
+					mGeomagnetic);
+			if (success) {
+				float orientation[] = new float[3];
+				SensorManager.getOrientation(R, orientation);
+				// Log.d(TAG, "azimuth (rad): " + azimuth);
+				azimuth = (float) Math.toDegrees(orientation[0]); // orientation
+				azimuth = (azimuth + 360) % 360;
+				// Log.d(TAG, "azimuth (deg): " + azimuth);
+				adjustArrow();
 			}
 		}
 	}
