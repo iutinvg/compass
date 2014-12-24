@@ -5,9 +5,10 @@ Enhancements are welcome!
 
 Nearest changes:
 
-0. customization of point to show
-1. better graphics
-2. better animation
+* customization of point to show
+* recreate project in android studio
+* better graphics
+* better animation
 
 ### Articles to Learn
 * http://stackoverflow.com/questions/12800982/accelerometer-with-low-passfilter-in-android
