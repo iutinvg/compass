@@ -5,6 +5,7 @@ Enhancements are welcome!
 
 Nearest changes:
 
+0. customization of point to show
 1. better graphics
 2. better animation
 
