@@ -8,7 +8,7 @@ android {
         applicationId "com.sevencrayons.compass"
         minSdkVersion 10
         targetSdkVersion 22
-        versionCode 1
+        versionCode 201505021
         versionName "1.0"
     }
     buildTypes {
