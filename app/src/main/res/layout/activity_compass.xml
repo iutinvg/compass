@@ -7,16 +7,16 @@
 
     <ImageView
         android:id="@+id/main_image_compass"
-        android:layout_width="141dp"
-        android:layout_height="141dp"
+        android:layout_width="320dp"
+        android:layout_height="320dp"
         android:layout_centerInParent="true"
         android:contentDescription="@string/compass_bkg"
         android:src="@drawable/bkg_compass" />
 
     <ImageView
         android:id="@+id/main_image_arrow"
-        android:layout_width="73dp"
-        android:layout_height="75dp"
+        android:layout_width="41dp"
+        android:layout_height="240dp"
         android:layout_centerInParent="true"
         android:contentDescription="@string/compass_arrow"
         android:scaleType="fitXY"
