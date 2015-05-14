@@ -12,6 +12,8 @@ Nearest changes:
 
 * better, correct graphics
 * customization of point to show
+* relevant layout for different devices (tablets)
+* insert an instructon about how to calibrate device sensors
 
 ### How to Build
 * launch Android Studio
