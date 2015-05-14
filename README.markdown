@@ -1,5 +1,5 @@
 Compass is a sample android application which implements trivial compass functionality.
-It was created just as a code snippet as it is required in most of my projects.
+It was created just as a code snippet reuse in some of my projects.
 
 The main feature of the compass is noise filter (Low-pass filter) which make the arrow
 more stable in comparison to other similar applications where arrow always trembles.
