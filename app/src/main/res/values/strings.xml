@@ -3,7 +3,7 @@
 
     <string name="action_settings">Settings</string>
 
-    <string name="compass_bkg">Compass Background</string>
-    <string name="compass_arrow">Compass Arrow</string>
+    <string name="compass_dial">Compass Dial</string>
+    <string name="compass_hands">Compass Hands</string>
 
 </resources>

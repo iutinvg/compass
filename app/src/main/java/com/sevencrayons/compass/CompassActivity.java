@@ -20,7 +20,7 @@ public class CompassActivity extends ActionBarActivity {
         setContentView(R.layout.activity_compass);
 
         compass = new Compass(this);
-        compass.arrowView = (ImageView) findViewById(R.id.main_image_arrow);
+        compass.arrowView = (ImageView) findViewById(R.id.main_image_hands);
     }
 
     @Override
