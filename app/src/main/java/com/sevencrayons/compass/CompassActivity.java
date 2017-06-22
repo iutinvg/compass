@@ -1,5 +1,6 @@
 package com.sevencrayons.compass;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -66,7 +67,8 @@ public class CompassActivity extends ActionBarActivity {
     }
 
     private void startDestinationActivity() {
-
+        Intent i = new Intent(this, DestinationActivity.class);
+        startActivity(i);
     }
 
 //    @Override
