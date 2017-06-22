@@ -4,6 +4,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.util.Log;
 
@@ -11,6 +13,8 @@ import android.util.Log;
 public class CompassActivity extends ActionBarActivity {
 
     private static final String TAG = "CompassActivity";
+
+    private Button btnDestination;
 
     private Compass compass;
 
@@ -21,6 +25,8 @@ public class CompassActivity extends ActionBarActivity {
 
         compass = new Compass(this);
         compass.arrowView = (ImageView) findViewById(R.id.main_image_hands);
+
+        setupDestinationButton();
     }
 
     @Override
@@ -47,6 +53,20 @@ public class CompassActivity extends ActionBarActivity {
         super.onStop();
         Log.d(TAG, "stop compass");
         compass.stop();
+    }
+
+    private void setupDestinationButton() {
+        btnDestination = (Button) findViewById(R.id.btn_destination);
+        btnDestination.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startDestinationActivity();
+            }
+        });
+    }
+
+    private void startDestinationActivity() {
+
     }
 
 //    @Override
