@@ -3,9 +3,11 @@ package com.sevencrayons.compass;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+//import android.view.Menu;
+//import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.util.Log;
@@ -16,6 +18,7 @@ public class CompassActivity extends ActionBarActivity {
     private static final String TAG = "CompassActivity";
 
     private Button btnDestination;
+    private ImageView arrowView;
 
     private Compass compass;
 
@@ -23,10 +26,7 @@ public class CompassActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compass);
-
-        compass = new Compass(this);
-        compass.arrowView = (ImageView) findViewById(R.id.main_image_hands);
-
+        setupCompass();
         setupDestinationButton();
     }
 
@@ -70,6 +70,33 @@ public class CompassActivity extends ActionBarActivity {
         Intent i = new Intent(this, DestinationActivity.class);
         startActivity(i);
     }
+
+    private void setupCompass() {
+        arrowView = (ImageView) findViewById(R.id.main_image_hands);
+        compass = new Compass(this);
+        Compass.CompassListener cl = new Compass.CompassListener(){
+            private float currentAzimuth;
+
+            @Override
+            public void onNewAzimuth(float azimuth) {
+                Log.d(TAG, "will set rotation from " + currentAzimuth + " to "
+                        + azimuth);
+
+                Animation an = new RotateAnimation(-currentAzimuth, -azimuth,
+                        Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
+                        0.5f);
+                currentAzimuth = azimuth;
+
+                an.setDuration(500);
+                an.setRepeatCount(0);
+                an.setFillAfter(true);
+
+                arrowView.startAnimation(an);
+            }
+        };
+        compass.setListener(cl);
+    }
+
 
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {

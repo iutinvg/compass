@@ -11,18 +11,20 @@ import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 
 public class Compass implements SensorEventListener {
-	private static final String TAG = "Compass";
+    private static final String TAG = "Compass";
 
-	private SensorManager sensorManager;
+    public interface CompassListener {
+        void onNewAzimuth(float azimuth);
+    }
+    private CompassListener listener;
+
+    private SensorManager sensorManager;
 	private Sensor gsensor;
 	private Sensor msensor;
 	private float[] mGravity = new float[3];
 	private float[] mGeomagnetic = new float[3];
-	private float azimuth = 0f;
-	private float currectAzimuth = 0;
-
-	// compass arrow to rotate
-	public ImageView arrowView = null;
+	private float azimuth;
+	private float azimuthFix;
 
 	public Compass(Context context) {
 		sensorManager = (SensorManager) context
@@ -42,26 +44,17 @@ public class Compass implements SensorEventListener {
 		sensorManager.unregisterListener(this);
 	}
 
-	private void adjustArrow() {
-		if (arrowView == null) {
-			Log.i(TAG, "arrow view is not set");
-			return;
-		}
-
-		Log.i(TAG, "will set rotation from " + currectAzimuth + " to "
-				+ azimuth);
-
-		Animation an = new RotateAnimation(-currectAzimuth, -azimuth,
-				Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
-				0.5f);
-		currectAzimuth = azimuth;
-
-		an.setDuration(500);
-		an.setRepeatCount(0);
-		an.setFillAfter(true);
-
-		arrowView.startAnimation(an);
+	public void setAzimuthFix(float fix) {
+		azimuthFix = fix;
 	}
+
+	public void resetAzimuthFix() {
+		setAzimuthFix(0);
+	}
+
+	public void setListener(CompassListener l) {
+        listener = l;
+    }
 
 	@Override
 	public void onSensorChanged(SensorEvent event) {
@@ -104,9 +97,11 @@ public class Compass implements SensorEventListener {
 				SensorManager.getOrientation(R, orientation);
 				// Log.d(TAG, "azimuth (rad): " + azimuth);
 				azimuth = (float) Math.toDegrees(orientation[0]); // orientation
-				azimuth = (azimuth + 360) % 360;
+				azimuth = (azimuth + azimuthFix + 360) % 360;
 				// Log.d(TAG, "azimuth (deg): " + azimuth);
-				adjustArrow();
+                if (listener != null) {
+                    listener.onNewAzimuth(azimuth);
+                }
 			}
 		}
 	}
