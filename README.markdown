@@ -20,8 +20,9 @@ Current WIP:
 * customization of place to point
 See [dev branch](https://github.com/iutinvg/compass/tree/dev) for details.
 
-If you use `Compass` in your project please consider the class from `dev` branch:
-it's shorter and easier to integrate.
+So for now, if you use `Compass` class in your project please consider the
+[Compass](https://github.com/iutinvg/compass/blob/dev/app/src/main/java/com/sevencrayons/compass/Compass.java)
+from `dev` branch: it's shorter and easier to integrate.
 
 ### How to Build
 * launch Android Studio
