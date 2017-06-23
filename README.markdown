@@ -1,3 +1,8 @@
+Current WIP:
+* `Compass` class refactoring (detach working with views) [DONE]
+* customization of place to point
+See [dev-branch](https://github.com/iutinvg/compass/tree/dev) for details.
+
 Compass is a sample android application which implements trivial compass functionality.
 It was created just as a code snippet reuse in some of my projects.
 
@@ -11,7 +16,7 @@ Enhancements are welcome!
 Nearest changes:
 
 * better, correct graphics
-* customization of point to show
+* customization of place to point
 * relevant layout for different devices (tablets)
 * insert an instructon about how to calibrate device sensors
 
