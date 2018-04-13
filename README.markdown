@@ -8,21 +8,11 @@ You can install it from google play: https://play.google.com/store/apps/details?
 
 Enhancements are welcome!
 
-Nearest changes:
-
+### TODO:
+* customization of place to point, see [dev branch](https://github.com/iutinvg/compass/tree/dev) for details
 * better, correct graphics
 * relevant layout for different devices (tablets)
 * insert an instructon about how to calibrate device sensors
-
-### Important Notes
-Current WIP:
-* `Compass` class refactoring (detach working with views) [DONE]
-* customization of place to point
-See [dev branch](https://github.com/iutinvg/compass/tree/dev) for details.
-
-So for now, if you use `Compass` class in your project please consider the
-[Compass](https://github.com/iutinvg/compass/blob/dev/app/src/main/java/com/sevencrayons/compass/Compass.java)
-from `dev` branch: it's shorter and easier to integrate.
 
 ### How to Build
 * launch Android Studio

@@ -1,9 +1,11 @@
 package com.sevencrayons.compass;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ImageView;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
+import android.widget.ImageView;
 
 
 public class CompassActivity extends AppCompatActivity {
@@ -11,14 +13,16 @@ public class CompassActivity extends AppCompatActivity {
     private static final String TAG = "CompassActivity";
 
     private Compass compass;
+    private ImageView arrowView;
+
+    private float currentAzimuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compass);
-
-        compass = new Compass(this);
-        compass.arrowView = (ImageView) findViewById(R.id.main_image_hands);
+        arrowView = (ImageView) findViewById(R.id.main_image_hands);
+        setupCompass();
     }
 
     @Override
@@ -45,5 +49,33 @@ public class CompassActivity extends AppCompatActivity {
         super.onStop();
         Log.d(TAG, "stop compass");
         compass.stop();
+    }
+
+    private void setupCompass() {
+        compass = new Compass(this);
+        Compass.CompassListener cl = new Compass.CompassListener() {
+
+            @Override
+            public void onNewAzimuth(float azimuth) {
+                adjustArrow(azimuth);
+            }
+        };
+        compass.setListener(cl);
+    }
+
+    private void adjustArrow(float azimuth) {
+        Log.d(TAG, "will set rotation from " + currentAzimuth + " to "
+                + azimuth);
+
+        Animation an = new RotateAnimation(-currentAzimuth, -azimuth,
+                Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
+                0.5f);
+        currentAzimuth = azimuth;
+
+        an.setDuration(500);
+        an.setRepeatCount(0);
+        an.setFillAfter(true);
+
+        arrowView.startAnimation(an);
     }
 }
