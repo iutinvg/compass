@@ -1,6 +1,6 @@
 package com.sevencrayons.compass;
 
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.util.Log;
 
 
-public class DestinationActivity extends ActionBarActivity {
+public class DestinationActivity extends AppCompatActivity {
 
     private static final String TAG = "DestinationActivity";
 

@@ -1,7 +1,7 @@
 package com.sevencrayons.compass;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 //import android.view.Menu;
 //import android.view.MenuItem;
@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.util.Log;
 
 
-public class CompassActivity extends ActionBarActivity {
+public class CompassActivity extends AppCompatActivity {
 
     private static final String TAG = "CompassActivity";
 
