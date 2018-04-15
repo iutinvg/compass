@@ -22,8 +22,12 @@ public class Compass implements SensorEventListener {
     private SensorManager sensorManager;
     private Sensor gsensor;
     private Sensor msensor;
+
     private float[] mGravity = new float[3];
     private float[] mGeomagnetic = new float[3];
+    private float[] R = new float[9];
+    private float[] I = new float[9];
+
     private float azimuth;
     private float azimuthFix;
 
@@ -89,8 +93,6 @@ public class Compass implements SensorEventListener {
 
             }
 
-            float R[] = new float[9];
-            float I[] = new float[9];
             boolean success = SensorManager.getRotationMatrix(R, I, mGravity,
                     mGeomagnetic);
             if (success) {
