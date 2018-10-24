@@ -25,3 +25,4 @@ Enhancements are welcome!
 * http://developer.android.com/reference/android/hardware/Sensor.html#TYPE_ACCELEROMETER
 * http://stackoverflow.com/questions/1884699/android-compass-noise-algorithm
 * http://en.wikipedia.org/wiki/Low-pass_filter
+* Find closest number in array using binary search https://www.geeksforgeeks.org/find-closest-number-array/

@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 
 public class CompassActivity extends AppCompatActivity {
@@ -14,14 +15,20 @@ public class CompassActivity extends AppCompatActivity {
 
     private Compass compass;
     private ImageView arrowView;
+    private TextView sotwLabel;  // SOTW is for "side of the world"
 
     private float currentAzimuth;
+    private SOTWFormatter sotwFormatter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compass);
-        arrowView = (ImageView) findViewById(R.id.main_image_hands);
+
+        sotwFormatter = new SOTWFormatter(this);
+
+        arrowView = findViewById(R.id.main_image_hands);
+        sotwLabel = findViewById(R.id.sotw_label);
         setupCompass();
     }
 
@@ -58,6 +65,7 @@ public class CompassActivity extends AppCompatActivity {
             @Override
             public void onNewAzimuth(float azimuth) {
                 adjustArrow(azimuth);
+                adjustSotwLabel(azimuth);
             }
         };
         compass.setListener(cl);
@@ -77,5 +85,9 @@ public class CompassActivity extends AppCompatActivity {
         an.setFillAfter(true);
 
         arrowView.startAnimation(an);
+    }
+
+    private void adjustSotwLabel(float azimuth) {
+        sotwLabel.setText(sotwFormatter.format(azimuth));
     }
 }

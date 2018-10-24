@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Компас</string>
+
+    <string name="action_settings">Настройки</string>
+
+    <string name="sotw_north">С</string>
+    <string name="sotw_east">В</string>
+    <string name="sotw_south">Ю</string>
+    <string name="sotw_west">З</string>
+    <string name="sotw_northeast">СВ</string>
+    <string name="sotw_northwest">СЗ</string>
+    <string name="sotw_southeast">ЮВ</string>
+    <string name="sotw_southwest">ЮЗ</string>
+
+</resources>
