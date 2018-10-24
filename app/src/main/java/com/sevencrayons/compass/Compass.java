@@ -5,10 +5,6 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.util.Log;
-import android.view.animation.Animation;
-import android.view.animation.RotateAnimation;
-import android.widget.ImageView;
 
 public class Compass implements SensorEventListener {
     private static final String TAG = "Compass";
