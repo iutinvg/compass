@@ -8,8 +8,8 @@ You can install it from google play: https://play.google.com/store/apps/details?
 
 Enhancements are welcome!
 
-Nearest changes:
-
+### TODO:
+* customization of place to point, see [dev branch](https://github.com/iutinvg/compass/tree/dev) for details
 * better, correct graphics
 * customization of point to show
 * relevant layout for different devices (tablets)
@@ -26,3 +26,4 @@ Nearest changes:
 * http://developer.android.com/reference/android/hardware/Sensor.html#TYPE_ACCELEROMETER
 * http://stackoverflow.com/questions/1884699/android-compass-noise-algorithm
 * http://en.wikipedia.org/wiki/Low-pass_filter
+* Find closest number in array using binary search https://www.geeksforgeeks.org/find-closest-number-array/
