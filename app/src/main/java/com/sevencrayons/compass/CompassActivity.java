@@ -1,8 +1,8 @@
 package com.sevencrayons.compass;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
@@ -80,14 +80,7 @@ public class CompassActivity extends AppCompatActivity {
 
     private void setupCompass() {
         compass = new Compass(this);
-        Compass.CompassListener cl = new Compass.CompassListener() {
-
-            @Override
-            public void onNewAzimuth(float azimuth) {
-                adjustArrow(azimuth);
-                adjustSotwLabel(azimuth);
-            }
-        };
+        Compass.CompassListener cl = getCompassListener();
         compass.setListener(cl);
     }
 
@@ -109,5 +102,22 @@ public class CompassActivity extends AppCompatActivity {
 
     private void adjustSotwLabel(float azimuth) {
         sotwLabel.setText(sotwFormatter.format(azimuth));
+    }
+
+    private Compass.CompassListener getCompassListener() {
+        return new Compass.CompassListener() {
+            @Override
+            public void onNewAzimuth(final float azimuth) {
+                // UI updates only in UI thread
+                // https://stackoverflow.com/q/11140285/444966
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        adjustArrow(azimuth);
+                        adjustSotwLabel(azimuth);
+                    }
+                });
+            }
+        };
     }
 }
