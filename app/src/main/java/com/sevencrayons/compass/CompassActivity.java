@@ -8,6 +8,13 @@ import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.util.Timer;
+import java.util.TimerTask;
+
 
 public class CompassActivity extends AppCompatActivity {
 
@@ -19,6 +26,7 @@ public class CompassActivity extends AppCompatActivity {
 
     private float currentAzimuth;
     private SOTWFormatter sotwFormatter;
+    public String NMEA_Str = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,5 +107,62 @@ public class CompassActivity extends AppCompatActivity {
                 });
             }
         };
+    }
+
+    private void SendCompass() throws IOException {
+
+        DatagramSocket localSocket = new DatagramSocket();
+
+        String message = NMEA_Str;
+
+        String remoteServerAddr = "192.168.2.255";
+
+        InetAddress remoteServerInetAddr = InetAddress.getByName(remoteServerAddr);
+        int remoteServerPort = 12345;
+        DatagramPacket dataGramPacket = new DatagramPacket(message.getBytes(), message.length(), remoteServerInetAddr, remoteServerPort);
+
+        localSocket.send(dataGramPacket);
+        localSocket.close();
+
+
+    }
+    int getCheckSum(String s) {
+// Checksum berechnen und als int ausgeben
+// wird als HEX benötigt im NMEA Datensatz
+// zwischen $ oder ! und * rechnen
+//
+// Matthias Busse 18.05.2014 Version 1.1
+
+        int i, XOR, c;
+
+        for (XOR = 0, i = 0; i < s.length(); i++) {
+            c = (byte)s.charAt(i);
+            if (c == '*') break;
+            if ((c!='$') && (c!='!')) XOR ^= c;
+        }
+        return XOR;
+    }
+
+    class MyTask1 extends TimerTask {
+        public MyTask1() {
+        }
+
+        @Override
+        public void run() {
+
+            // System.out.println(new Date());
+            try {
+
+                SendCompass();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void doTimerTask() throws InterruptedException {
+        Timer timer = new Timer(true); // true = daemon !
+        timer.schedule(new MyTask1(), 1000, 500);
+
     }
 }
