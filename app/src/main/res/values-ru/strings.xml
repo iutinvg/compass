@@ -1,15 +1,18 @@
 <resources>
-    <string name="app_name">Компас</string>
+    <string name="app_name">Compass</string>
 
-    <string name="action_settings">Настройки</string>
+    <string name="action_settings">Settings</string>
 
-    <string name="sotw_north">С</string>
-    <string name="sotw_east">В</string>
-    <string name="sotw_south">Ю</string>
-    <string name="sotw_west">З</string>
-    <string name="sotw_northeast">СВ</string>
-    <string name="sotw_northwest">СЗ</string>
-    <string name="sotw_southeast">ЮВ</string>
-    <string name="sotw_southwest">ЮЗ</string>
+    <string name="compass_dial" translatable="false">Compass Dial</string>
+    <string name="compass_hands" translatable="false">Compass Hands</string>
+
+    <string name="sotw_north">N</string>
+    <string name="sotw_east">E</string>
+    <string name="sotw_south">S</string>
+    <string name="sotw_west">W</string>
+    <string name="sotw_northeast">NE</string>
+    <string name="sotw_northwest">NW</string>
+    <string name="sotw_southeast">SE</string>
+    <string name="sotw_southwest">SW</string>
 
 </resources>
