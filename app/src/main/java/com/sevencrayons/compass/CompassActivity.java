@@ -3,6 +3,8 @@ package com.sevencrayons.compass;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+
+import androidx.annotation.IdRes;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.util.Xml;
@@ -16,6 +18,13 @@ import android.widget.ImageView;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.util.Timer;
+import java.util.TimerTask;
+
 
 public class CompassActivity extends AppCompatActivity {
 
@@ -24,9 +33,10 @@ public class CompassActivity extends AppCompatActivity {
     private Compass compass;
     private ImageView arrowView;
     private TextView sotwLabel;  // SOTW is for "side of the world"
-    private Button SendButton;
     private float currentAzimuth;
     private SOTWFormatter sotwFormatter;
+    private String NMEA_Str;
+    private TextView hTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,18 +47,18 @@ public class CompassActivity extends AppCompatActivity {
 
         arrowView = findViewById(R.id.main_image_hands);
         sotwLabel = findViewById(R.id.sotw_label);
-        SendButton = findViewById(R.id.SendButton);
-        hTextView = (TextView)findViewById(R.id.NMEA_View);
+        Button sendButton = findViewById(R.id.SendButton);
+        hTextView = findViewById(R.id.NMEA_View);
 
         setupCompass();
-        hGravity_X_View = (TextView)findViewById(R.id.Gravity_X);
-        hGravity_Y_View = (TextView)findViewById(R.id.Gravity_Y);
-        hGravity_Z_View = (TextView)findViewById(R.id.Gravity_Z);
+        TextView hGravity_X_View = (TextView) findViewById(R.id.Gravity_X);
+        TextView hGravity_Y_View = (TextView) findViewById(R.id.Gravity_Y);
+        TextView hGravity_Z_View = (TextView) findViewById(R.id.Gravity_Z);
 
 
-        hMagnet_X_View = (TextView)findViewById(R.id.Magnetic_X);
-        hMagnet_Y_View = (TextView)findViewById(R.id.Magnetic_Y);
-        hMagnet_Z_View = (TextView)findViewById(R.id.Magnetic_Z);
+        TextView hMagnet_X_View = (TextView) findViewById(R.id.Magnetic_X);
+        TextView hMagnet_Y_View = (TextView) findViewById(R.id.Magnetic_Y);
+        TextView hMagnet_Z_View = (TextView) findViewById(R.id.Magnetic_Z);
 
 
         setupCompass();
