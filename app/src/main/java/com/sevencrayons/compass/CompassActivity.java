@@ -3,15 +3,7 @@ package com.sevencrayons.compass;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.annotation.CallSuper;
-import android.support.annotation.IdRes;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.StyleRes;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.util.Xml;
 import android.view.Display;
@@ -24,17 +16,6 @@ import android.widget.ImageView;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.net.SocketException;
-import java.net.UnknownHostException;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-
 
 public class CompassActivity extends AppCompatActivity {
 
@@ -46,21 +27,6 @@ public class CompassActivity extends AppCompatActivity {
     private Button SendButton;
     private float currentAzimuth;
     private SOTWFormatter sotwFormatter;
-    public String NMEA_Str = "";
-    public float offset_azimuth = (float) -90.0;
-    TimerTask mTimerTask;
-    final Handler handler = new Handler();
-    Timer t = new Timer();
-    TextView hTextView;
-    TableRow hTableRow;
-    //Button hButton, hButtonStop;
-    String Message;
-    private TextView hGravity_X_View;
-    private TextView hGravity_Y_View;
-    private TextView hGravity_Z_View;
-    private TextView hMagnet_X_View;
-    private TextView hMagnet_Y_View;
-    private TextView hMagnet_Z_View;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -165,8 +131,6 @@ public class CompassActivity extends AppCompatActivity {
 
     private Compass.CompassListener getCompassListener() {
         return new Compass.CompassListener() {
-
-
             @Override
             public void onNewAzimuth(final float azimuth) {
                 // UI updates only in UI thread
@@ -174,8 +138,7 @@ public class CompassActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-
-                        adjustArrow(azimuth+GetDisplayAngle()+offset_azimuth);
+                        adjustArrow(azimuth);
                         adjustSotwLabel(azimuth);
                         NMEA_Str = sotwFormatter.NMEA_format(azimuth);
                         hTextView.setText(NMEA_Str);
@@ -183,11 +146,6 @@ public class CompassActivity extends AppCompatActivity {
                     }
                 });
             }
-
-           /* @Override
-            public void onNewPitch(float pitch) {
-
-            }*/
         };
     }
 
