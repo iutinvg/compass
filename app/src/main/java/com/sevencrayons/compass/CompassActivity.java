@@ -2,6 +2,7 @@ package com.sevencrayons.compass;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 
 import androidx.annotation.IdRes;
@@ -41,17 +42,18 @@ public class CompassActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_compass);
 
         sotwFormatter = new SOTWFormatter(this);
 
         arrowView = findViewById(R.id.main_image_hands);
         sotwLabel = findViewById(R.id.sotw_label);
-        Button sendButton = findViewById(R.id.SendButton);
+      //  Button sendButton = findViewById(R.id.SendButton);
         hTextView = findViewById(R.id.NMEA_View);
 
-        setupCompass();
-        TextView hGravity_X_View = (TextView) findViewById(R.id.Gravity_X);
+     /*   TextView hGravity_X_View = (TextView) findViewById(R.id.Gravity_X);
         TextView hGravity_Y_View = (TextView) findViewById(R.id.Gravity_Y);
         TextView hGravity_Z_View = (TextView) findViewById(R.id.Gravity_Z);
 
@@ -59,12 +61,16 @@ public class CompassActivity extends AppCompatActivity {
         TextView hMagnet_X_View = (TextView) findViewById(R.id.Magnetic_X);
         TextView hMagnet_Y_View = (TextView) findViewById(R.id.Magnetic_Y);
         TextView hMagnet_Z_View = (TextView) findViewById(R.id.Magnetic_Z);
-
+*/
 
         setupCompass();
+        try {
+            doTimerTask();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
-
-        findViewById(R.id.SendButton).setOnClickListener(new View.OnClickListener() {
+       /* findViewById(R.id.SendButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new Thread(new Runnable() {
@@ -79,7 +85,7 @@ public class CompassActivity extends AppCompatActivity {
                     }
                 }).start();
             }
-        });
+        });*/
     }
 
     @Override
@@ -92,13 +98,13 @@ public class CompassActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        compass.stop();
+       // compass.stop();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        compass.start();
+        //compass.start();
     }
 
     @Override
@@ -188,7 +194,7 @@ public class CompassActivity extends AppCompatActivity {
 
         String message = NMEA_Str;
 
-        String remoteServerAddr = "192.168.2.255";
+        String remoteServerAddr = "255.255.255.255";//"192.168.2.255";
 
         InetAddress remoteServerInetAddr = InetAddress.getByName(remoteServerAddr);
         int remoteServerPort = 12345;
@@ -218,10 +224,10 @@ public class CompassActivity extends AppCompatActivity {
 
     class MyTask1 extends TimerTask
     {
-        public MyTask1()
+       /* public MyTask1()
         {
         }
-
+*/
         @Override
         public void run()
         {
@@ -238,7 +244,7 @@ public class CompassActivity extends AppCompatActivity {
 
     public void doTimerTask() throws InterruptedException {
         Timer timer = new Timer(true); // true = daemon !
-        timer.schedule(new MyTask1(),1000, 500);
+        timer.schedule(new MyTask1(),600, 500);
 // Der Timer beendet sich nach dem Singleshot nicht sofort
     //    Thread.sleep(500);
 

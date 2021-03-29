@@ -27,73 +27,75 @@
         android:id="@+id/sotw_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+    <!--
+       <Button
+           android:id="@+id/SendButton"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentEnd="true"
+           android:layout_alignParentBottom="false"
+           android:layout_marginEnd="23dp"
+           android:layout_marginTop="60dp"
+           android:text="Send"
+           android:layout_alignParentRight="true"
+           android:layout_marginRight="23dp" />
+   -->
+       <TextView
+           android:id="@+id/NMEA_View"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_alignParentBottom="true"
+           android:text="TextView" />
 
-    <Button
-        android:id="@+id/SendButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="false"
-        android:layout_marginEnd="23dp"
-        android:layout_marginTop="60dp"
-        android:text="Send" />
+      <!-- <TextView
+           android:id="@+id/Gravity_X"
+           android:layout_width="136dp"
+           android:layout_height="wrap_content"
+           android:layout_alignParentBottom="true"
+           android:layout_marginBottom="100dp"
+           android:text="TextView" />
 
-    <TextView
-        android:id="@+id/NMEA_View"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:text="TextView" />
+       <TextView
+           android:id="@+id/Gravity_Z"
+           android:layout_width="136dp"
+           android:layout_height="wrap_content"
+           android:layout_alignParentBottom="true"
+           android:layout_marginBottom="60dp"
+           android:text="TextView" />
 
-    <TextView
-        android:id="@+id/Gravity_X"
-        android:layout_width="136dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="100dp"
-        android:text="TextView" />
+       <TextView
+           android:id="@+id/Gravity_Y"
+           android:layout_width="136dp"
+           android:layout_height="wrap_content"
+           android:layout_alignParentBottom="true"
+           android:layout_marginBottom="80dp"
+           android:text="TextView" />
 
-    <TextView
-        android:id="@+id/Gravity_Z"
-        android:layout_width="136dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="60dp"
-        android:text="TextView" />
+       <TextView
+           android:id="@+id/Magnetic_X"
+           android:layout_width="136dp"
+           android:layout_height="wrap_content"
+           android:layout_alignParentEnd="true"
+           android:layout_alignParentBottom="true"
+           android:layout_marginBottom="100dp"
+           android:text="TextView" />
 
-    <TextView
-        android:id="@+id/Gravity_Y"
-        android:layout_width="136dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="80dp"
-        android:text="TextView" />
+       <TextView
+           android:id="@+id/Magnetic_Z"
+           android:layout_width="136dp"
+           android:layout_height="wrap_content"
+           android:layout_alignParentEnd="true"
+           android:layout_alignParentBottom="true"
+           android:layout_marginBottom="60dp"
+           android:text="TextView" />
 
-    <TextView
-        android:id="@+id/Magnetic_X"
-        android:layout_width="136dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="100dp"
-        android:text="TextView" />
-
-    <TextView
-        android:id="@+id/Magnetic_Z"
-        android:layout_width="136dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="60dp"
-        android:text="TextView" />
-
-    <TextView
-        android:id="@+id/Magnetic_Y"
-        android:layout_width="136dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="80dp"
-        android:text="TextView" />
-
+       <TextView
+           android:id="@+id/Magnetic_Y"
+           android:layout_width="136dp"
+           android:layout_height="wrap_content"
+           android:layout_alignParentEnd="true"
+           android:layout_alignParentBottom="true"
+           android:layout_marginBottom="80dp"
+           android:text="TextView" />
+   -->
 </RelativeLayout>

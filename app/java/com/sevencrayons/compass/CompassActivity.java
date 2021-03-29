@@ -88,7 +88,7 @@ public class CompassActivity extends AppCompatActivity {
         setupCompass();
 
 
-        findViewById(R.id.SendButton).setOnClickListener(new View.OnClickListener() {
+      /*  findViewById(R.id.SendButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new Thread(new Runnable() {
@@ -102,7 +102,7 @@ public class CompassActivity extends AppCompatActivity {
                         }
                     }
                 }).start();
-            }
+            }*/
         });
     }
 
@@ -116,7 +116,7 @@ public class CompassActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        compass.stop();
+      //  compass.stop();
     }
 
     @Override
