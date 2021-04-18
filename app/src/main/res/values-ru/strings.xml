@@ -2,6 +2,7 @@
     <string name="app_name">Компас</string>
 
     <string name="action_settings">Настройки</string>
+    <string name="no_location_available">Местоположение не определено</string>
 
     <string name="sotw_north">С</string>
     <string name="sotw_east">В</string>

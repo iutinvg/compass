@@ -10,7 +10,11 @@ public class Compass implements SensorEventListener {
     private static final String TAG = "Compass";
 
     public interface CompassListener {
-        void onNewAzimuth(float azimuth);
+        /***
+         *
+         * @param azimuth - value in [0..360]
+         */
+        void onNewAzimuth(int azimuth);
     }
 
     private CompassListener listener;
@@ -26,6 +30,8 @@ public class Compass implements SensorEventListener {
 
     private float azimuth;
     private float azimuthFix;
+
+
 
     public Compass(Context context) {
         sensorManager = (SensorManager) context
@@ -97,9 +103,9 @@ public class Compass implements SensorEventListener {
                 // Log.d(TAG, "azimuth (rad): " + azimuth);
                 azimuth = (float) Math.toDegrees(orientation[0]); // orientation
                 azimuth = (azimuth + azimuthFix + 360) % 360;
-                // Log.d(TAG, "azimuth (deg): " + azimuth);
+                //Log.d(TAG, "azimuth (deg): " + azimuth);
                 if (listener != null) {
-                    listener.onNewAzimuth(azimuth);
+                    listener.onNewAzimuth((int)azimuth);
                 }
             }
         }
