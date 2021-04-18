@@ -86,3 +86,8 @@ lint/tmp/
 
 # Android Profiling
 *.hprof
+
+# VS Code
+.project
+.settings/
+.vscode/

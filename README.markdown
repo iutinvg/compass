@@ -1,18 +1,10 @@
-Compass is a sample android application which implements trivial compass functionality.
-It was created just as a code snippet reuse in some of my projects.
+Jerusalem Compass is a sample android application which implements compass combined with GPS location facilities 
+allowing to locate Jerusalem direction.
 
-The main feature of the compass is noise filter (Low-pass filter) which make the arrow
-more stable in comparison to other similar applications where arrow always trembles.
-
-You can install it from google play: https://play.google.com/store/apps/details?id=com.sevencrayons.compass
-
-Enhancements are welcome!
+Compass code is based on https://github.com/iutinvg/compass
 
 ### TODO:
-* customization of place to point, see [dev branch](https://github.com/iutinvg/compass/tree/dev) for details
 * better, correct graphics
-* relevant layout for different devices (tablets)
-* insert an instructon about how to calibrate device sensors
 
 ### How to Build
 * launch Android Studio
